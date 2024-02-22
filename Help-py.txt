@@ -1,0 +1,46 @@
+py -m pip install --upgrade pip
+pip install pywin32
+pip install pyautogui
+pip install pillow
+pip install opencv-python
+pip install cryptography
+pip install infi.devicemanager  #remark infi\pyutils\decorators      //28 line//monkey_patch(inspect, "getargspec", inspect_getargspec_patch)--->>/monkey_patch(inspect, "getargs", inspect_getargspec_patch)
+https://learn.microsoft.com/en-us/windows-hardware/drivers/install/devpkey-device-problemcode
+Remarks:
+Device_status:
+infi\devicemanager
+       @property
+       @cached_method
+       def Device_status(self):
+            return self._get_setupapi_property(properties.DEVPKEY_Device_ProblemCode)
+
+build cmd pyinstaller --add-data images:images -w -i  C:\Users\C12\Desktop\PY\AutoWat\WinKey.png xxxx.py --onefile
+Mark file "__init__.py file" #__import__("pkg_resources").declare_namespace(__name__)   
+infi\devicemanager
+
+https://hakril.github.io/PythonForWindows/build/html/index.html
+https://www.yii666.com/blog/494412.html  win32gui
+https://programtalk.com/python-examples/win32gui.SetWindowPos/#google_vignette
+
+pip install pytesseract
+pip install pyinstaller
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyinstaller
+pyinstaller -F -i  C:\Users\C12\Desktop\PY\AutoWat\WinKey.png MS.py --noconsole
+pyinstaller -w -i  C:\Users\C12\Desktop\PY\AutoWat\WinKey.png MS.py --onefile
+pyinstaller -w --hide-console hide-early -i  C:\Users\C12\Desktop\PY\AutoWat\WinKey.png MS.py --onefile
+pyinstaller -D --hide-console hide-early --uac-admin -i  C:\Users\C12\Desktop\PY\AutoWat\WinKey.png MS.py --onefile
+pyinstaller --add-data images:images -w -i  C:\Users\C12\Desktop\PY\AutoWat\WinKey.png Mouse.py --onefile
+pyinstaller -D --hide-console hide-early --uac-admin --add-data images:images -w -i  C:\Users\C12\Desktop\PY\AutoWat\WinKey.png Mouse.py 
+
+pyinstaller -D --hidden-import DeviceManager  --hide-console hide-early -p .DeviceManager\  AutoWat_20241101.py
+pyinstaller -D --hidden-import DeviceManager --add-data DeviceManager:DeviceManager --hide-console hide-early -p .DeviceManager\  AutoWat_20241101.py
+cmd admin run pyinstaller -D --hide-console hide-early xxx.py
+
+https://blog.csdn.net/lyshark_lyshark/article/details/125848538
+https://blog.csdn.net/qq_40923160/article/details/110945879
+          http://timgolden.me.uk/pywin32-docs/contents.html
+https://juejin.cn/post/7306710731247796243
+https://pynput.readthedocs.io/en/latest/keyboard.html
+https://www.cnblogs.com/tobe-goodlearner/p/tutorial-pynput.html
+https://pyautogui.readthedocs.io/en/latest/screenshot.html
+https://hakril.github.io/PythonForWindows/build/html/index.html
