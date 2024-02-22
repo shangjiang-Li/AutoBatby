@@ -1,0 +1,34 @@
+@ECHO OFF
+@REM under Windows env
+ECHO ===========================================
+:: BatchGotAdmin
+ECHO ===========================================
+REM  --> Check for permissions
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+
+REM --> If error flag set, we do not have admin.
+if '%errorlevel%' NEQ '0' (
+    echo Requesting administrative privileges...
+    goto UACPrompt
+) else ( goto gotAdmin )
+
+:UACPrompt
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+    echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
+
+    wscript "%temp%\getadmin.vbs"
+    exit /B
+
+:gotAdmin
+    if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
+    pushd "%CD%"
+    CD /D "%~dp0"
+:--------------------------------------
+
+
+REM ===========================================
+
+DEL  /Q /F "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Manual_MSS4S5Restart*.*"
+DEL  /Q /F %USERPROFILE%\DESKTOP\GO
+pause
+goto :eof
